@@ -1,0 +1,1 @@
+<script src="<?=base_url('assets/js/bootstrap4-toggle.min.js')?>"></script>
