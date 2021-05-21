@@ -116,7 +116,7 @@ class SiswaController extends CI_Controller{
         'alamat' => $alamat,
         'tahun_angkatan' => $tahun_angkatan,
         'password' => $password,
-        'status' => $alamat,
+        'status' => $status,
         'foto' => $foto,
         'kelas_siswa' => $kelas_siswa
       ];
