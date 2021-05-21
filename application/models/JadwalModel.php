@@ -69,10 +69,11 @@
 	 */
 	function update($data,$where){
 		if(!$data || !$where) return false;
+		$this->db->set($data);
 		$this->db->where($where);
-		return $this->db->update($this->table,$data);
+		return $this->db->update($this->table);
 	}
-
+ 
 	/**
 	 * function delete digunakan untuk mendelet jadwal sesuai kertiteria
 	 */
