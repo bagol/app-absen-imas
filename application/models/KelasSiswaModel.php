@@ -13,8 +13,8 @@
       */
 
       function store($data){
-          if(!$data) return false;
-          return $this->db->insert($this->table,$data);
+        if(!$data) return false;
+        return $this->db->insert($this->table,$data);
       }
 
       /**
@@ -22,12 +22,19 @@
        * sesuai dengan keriteria
        */
       function find($where){
-          if(!$where) return false;
-          $this->db->select('*');
-          $this->db->from($this->table);
-          $this->db->join('tbl_kelas','tbl_kelas.kode_kelas=tbl_kelas_siswa.kode_kelas');
-          $this->db->where($where);
-          return $this->db->get();
+        if(!$where) return false;
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->join('tbl_kelas','tbl_kelas.kode_kelas=tbl_kelas_siswa.kode_kelas');
+        $this->db->where($where);
+        return $this->db->get();
+      }
+
+      function getKelas() {
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->join('tbl_kelas','tbl_kelas.kode_kelas=tbl_kelas_siswa.kode_kelas','left');
+        return $this->db->get();
       }
 
       /**

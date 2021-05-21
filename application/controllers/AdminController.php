@@ -251,7 +251,7 @@ class AdminController extends CI_Controller{
       "title" => 'Data Siswa',
       'subTitle' => 'Import Data Siswa',
     ];
-    $data['kelas'] = $kelas = $this->KelasSiswaModel->get()->result_array();
+    $data['kelas'] = $kelas = $this->KelasSiswaModel->getKelas()->result_array();
     $this->load->view('layout/header',$title);
     $this->load->view('admin/siswa/import_siswa',$data);
     $this->load->view('layout/footer');
