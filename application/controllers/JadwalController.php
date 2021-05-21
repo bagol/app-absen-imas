@@ -43,13 +43,13 @@ class JadwalController extends CI_Controller{
       'nip' => $this->input->post('guru'),
       'waktu' => $this->input->post('waktu'),
     ];
-    $where = ['kode_mapel' => $kode];
+    $where = ['kode_jadwal' => $kode];
     if($this->JadwalModel->update($data,$where)){
       echo json_encode([
         'status' => 'success',
         'message' => 'jadwal berhasil diperbaharuui',
         'icon' => 'success'
-      ]);
+      ]); 
     }else{
       echo json_encode([
         'status' => 'fail',

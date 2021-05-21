@@ -101,12 +101,18 @@
       fetch(url, data)
         .then(res => res.json())
         .then(data => {
-          swal(data.message,{ icon: data.icon })
+          console.log(data)
+          if(data.status === 'success'){
+            swal(data.status, data.message,{ icon: data.icon })
             .then(oK => {
               if(oK){
-                window.location.reload();
+                window.location.href= `<?=base_url('AdminController/jadwal')?>`;
               }
             })
+            return;
+          }
+
+          swal(data.status, data.message,{ icon: data.icon })
         })
     })
   }
