@@ -7,11 +7,13 @@ class KelasSiswaController extends CI_Controller{
       redirect('Auth/cekSession');
     }
     $this->load->model('KelasSiswaModel');
+    $this->load->model('GuruModel');
+    $this->load->model('WaliKelasModel');
   }
 
   function store(){
     if($this->KelasSiswaModel->find([
-      'kode_kelas' => $this->input->post('ruang'),
+      'tbl_kelas_siswa.kode_kelas' => $this->input->post('ruang'),
       'tahun_ajaran' => $this->input->post('tahun')
     ])->num_rows()){
       echo json_encode([
@@ -21,13 +23,31 @@ class KelasSiswaController extends CI_Controller{
       ]);
       return;
     }
+    $calon_wali_kelas = $this->GuruModel->find(['nip' => $this->input->post('wali')])->result_array()[0];
+    
+    $jadi_wali_kelas = [
+      'nip' => $calon_wali_kelas['nip'],
+      'nama_wali_kelas' => $calon_wali_kelas['nama_guru'],
+      'email_wali_kelas' => $calon_wali_kelas['email_guru'],
+      'password' => password_hash($calon_wali_kelas['nip'],PASSWORD_BCRYPT,['const' => 12]),
+      'foto' => $calon_wali_kelas['foto'],
+      'status' => 'aktif'
+    ];
+    if(!$this->WaliKelasModel->store($jadi_wali_kelas)){
+      echo json_encode([
+        'status' => 'fail',
+        'message' => 'Terjadi kesalahan saat menambahkan wali kelas',
+        'icon' => 'error'
+      ]);
+      return;
+    }
     $data = [
       'kode_kelas' => $this->input->post('ruang'),
       'kode_walikelas' => $this->input->post('wali'),
       'tahun_ajaran' => $this->input->post('tahun'),
       'semester' => $this->input->post('semester'),
     ];
-
+   
     if ($this->KelasSiswaModel->store($data)){
       echo json_encode([
         'status' => 'success',

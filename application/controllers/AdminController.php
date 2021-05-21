@@ -80,7 +80,9 @@ class AdminController extends CI_Controller{
 
   function masterKelasSiswa() {
     // deklarasi data wali kelas
+    $guru = $this->GuruModel->get()->result_array();
     $wali_kelas = $this->WaliKelasModel->get()->result_array();
+    $modal['guru'] = $guru;
     $modal['wali_kelas'] = $wali_kelas;
     // deklaris data ruang kelas
     $kelas = $this->KelasModel->get()->result_array();
@@ -97,7 +99,7 @@ class AdminController extends CI_Controller{
       'main' => 'Kelas',
       "title" => 'Data Umum',
       'subTitle' => 'Kelas Siswa'
-    ];
+    ]; 
     $this->load->view('layout/header',$title);
     $this->load->view('admin/master/kelas_siswa',$data);
     $this->load->view('layout/footer');
