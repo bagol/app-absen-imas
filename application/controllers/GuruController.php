@@ -59,7 +59,7 @@ class GuruController extends CI_Controller{
     $this->load->view('guru/rekap_absen',$data);
     $this->load->view('layout/footer');
   }
-
+ 
   function dataAbsen(){
     $title = [
       'main' => 'Absen',

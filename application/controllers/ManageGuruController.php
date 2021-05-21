@@ -81,7 +81,7 @@ class ManageGuruController extends CI_Controller {
       'icon' => 'error',
     ]);
   }
-
+ 
   public function do_upload($field)
   {
     $config['upload_path']          = './assets/images/profile/';

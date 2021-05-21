@@ -92,6 +92,7 @@ class AbsenController extends CI_Controller {
     $hadir = 0;
     $alpha = 0;
     $izin = 0;
+    $sakit = 0;
     $data = $this->AbsenModel->find(['nis' => $nis,'kode_jadwal' => $kode]);
     if($data->num_rows()){
       $data = $data->result_array();
@@ -106,6 +107,9 @@ class AbsenController extends CI_Controller {
         else if($d['keterangan'] === 'I') {
           $izin++;
         }
+        else if($d['keterangan'] === 'S') {
+          $sakit++;
+        }
       }
     }
     $return = [
@@ -113,9 +117,10 @@ class AbsenController extends CI_Controller {
       'totalAbsen' => [
         'hadir' => $hadir,
         'alpha' => $alpha,
-        'izin' => $izin
+        'izin' => $izin,
+        'sakit' => $sakit
       ]
-      ];
+    ];
     return $return;
   }
 }

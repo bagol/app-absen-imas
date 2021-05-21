@@ -51,6 +51,7 @@
                       <select name="opsi[]" id="opsi-absen-<?=$s['nis']?>" >
                         <option value="A">Alpha</option>
                         <option value="I">Izin</option>
+                        <option value="S">Sakit</option>
                         <option value="H" style='display:none;'>Hadir</option>
                       </select>
                     </td>

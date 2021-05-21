@@ -103,6 +103,7 @@
           html += `
             <td>${ item.totalAbsen.hadir }</td>
             <td>${ item.totalAbsen.izin }</td>
+            <td>${ item.totalAbsen.sakit }</td>
             <td>${ item.totalAbsen.alpha }</td>
           `;
           html += `</tr>`;
@@ -118,6 +119,7 @@
         head += `
           <th><p>Hadir</p></th>
           <th><p>Izin</p></th>
+          <th><p>Sakit</p></th>
           <th><p>Alpha</p></th>
         `;
         bookAbsenHead.innerHTML = head;
