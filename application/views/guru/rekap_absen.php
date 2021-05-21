@@ -61,7 +61,8 @@
         const dataAbsen = {
           hadir: 0 ,
           izin: 0,
-          alpha: 0
+          alpha: 0,
+          sakit:0
         };
         data.data.forEach(item => {
           html += `<tr>`;
@@ -73,12 +74,15 @@
               dataAbsen.izin++;
             }else if(absen.ket === 'A') {
               dataAbsen.alpha++;
+            }else if(absen.ket === 'S') {
+              dataAbsen.sakit++;
             }
             html += `<td >${absen.ket}</td>`;
           })
           html += `
             <td class="text-success"><b>${ item.totalAbsen.hadir }</b></td>
             <td class="text-warning"><b>${ item.totalAbsen.izin }</b></td>
+            <td class="text-info"><b>${ item.totalAbsen.sakit }</b></td>
             <td class="text-danger"><b>${ item.totalAbsen.alpha }</b></td>
           `;
           html += `</tr>`;
@@ -93,6 +97,7 @@
         head += `
           <th><p style="writing-mode: tb-rl; margin:0;">Hadir</p></th>
           <th><p style="writing-mode: tb-rl; margin:0;">Izin</p></th>
+          <th><p style="writing-mode: tb-rl; margin:0;">Sakit</p></th>
           <th><p style="writing-mode: tb-rl; margin:0;">Alpha</p></th>
         `;
         bookAbsenHead.innerHTML = head;
