@@ -23,6 +23,7 @@ class KelasSiswaController extends CI_Controller{
       ]);
       return;
     }
+
     $calon_wali_kelas = $this->GuruModel->find(['nip' => $this->input->post('wali')])->result_array()[0];
     
     $jadi_wali_kelas = [
@@ -33,14 +34,18 @@ class KelasSiswaController extends CI_Controller{
       'foto' => $calon_wali_kelas['foto'],
       'status' => 'aktif'
     ];
-    if(!$this->WaliKelasModel->store($jadi_wali_kelas)){
-      echo json_encode([
-        'status' => 'fail',
-        'message' => 'Terjadi kesalahan saat menambahkan wali kelas',
-        'icon' => 'error'
-      ]);
-      return;
+
+    if(!$this->WaliKelasModel->find(['nip' => $jadi_wali_kelas['nip']])->num_rows()){
+      if(!$this->WaliKelasModel->store($jadi_wali_kelas)){
+        echo json_encode([
+          'status' => 'fail',
+          'message' => 'Terjadi kesalahan saat menambahkan wali kelas',
+          'icon' => 'error'
+        ]);
+        return;
+      }
     }
+    
     $data = [
       'kode_kelas' => $this->input->post('ruang'),
       'kode_walikelas' => $this->input->post('wali'),

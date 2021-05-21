@@ -68,8 +68,8 @@
         <div class="form-group">
           <label for="squareSelect">Wali kelas</label>
           <select class="form-control input-square" id="waliKelasEdit">
-            <?php foreach($wali_kelas as $wk) : ?>
-              <option value="<?=$wk['nip']?>"><?=$wk['nama_wali_kelas']?></option>
+            <?php foreach($guru as $g) : ?>
+              <option value="<?=$g['nip']?>"><?=$g['nama_guru']?></option>
             <?php endforeach; ?>
           </select>
         </div>
