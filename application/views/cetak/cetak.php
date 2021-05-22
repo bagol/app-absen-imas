@@ -38,26 +38,26 @@
         <p class="text-center">
           <em> Jl. Parung Panjang - Tenjo RT 01 / RW 07, Batok, Tenjo, Batok, Kec. Tenjo,
           Bogor, Jawa Barat, Kode Pos (16370) </em> <br>
-          <b>Email : mtsinsanikreasi@gmail.com Telp.081234567890</b>
+          <b>Email : mtsinsanikreasi13@gmail.com Telp.081234567890</b>
         </p>
       </div>
       <div class="col-md-4 mt-4">
         <table>
           <tr >
-            <td><b style="border: 2px solid #000;" class="py-2 px-2">KELAS</b></td>
-            <td><b style="border: 2px solid #000;" class="ml-4 py-2 px-2">SMESTER</b></td>
+            <td><b style="border: 2px solid #000;" class="py-2 px-2"><?=$kelas['nama_kelas']?></b></td>
+            <td><b style="border: 2px solid #000;" class="ml-4 py-2 px-2"><?=$kelas['semester']?></b></td>
           </tr>
           <tr>
             <td><br> Nama Guru</td>
-            <td class="ml-4 px-4"><br> Haidir</td>
+            <td class="ml-4 px-4"><br><?=$guru['nama_guru']?></td>
           </tr>
           <tr>
             <td>Bidang Studi</td>
-            <td class="ml-4 px-4">IPA (Ilmu Pengetahuan Alam) </td>
+            <td class="ml-4 px-4"><?=$jadwal['nama_mapel']?> </td>
           </tr>
           <tr>
             <td>Wali Kelas</td>
-            <td class="ml-4 px-4">Haidir</td>
+            <td class="ml-4 px-4"><?=$wali_kelas['nama_wali_kelas']?></td>
           </tr>
         </table>
       </div>
