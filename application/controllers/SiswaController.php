@@ -100,6 +100,7 @@ class SiswaController extends CI_Controller{
       $nama = $data->getCellByColumnAndRow(2,$i)->getValue();
       $tempat_lahir = $data->getCellByColumnAndRow(3,$i)->getValue();
       $tanggal_lahir = $data->getCellByColumnAndRow(4,$i)->getValue();
+      $tanggal = \PhpOffice\PhpSpreadsheet\Shared\Date::excelToTimestamp($tanggal_lahir);
       $jenis_kelamin = $data->getCellByColumnAndRow(5,$i)->getValue();
       $alamat = $data->getCellByColumnAndRow(6,$i)->getValue();
       $tahun_angkatan = $data->getCellByColumnAndRow(7,$i)->getValue();
@@ -111,7 +112,7 @@ class SiswaController extends CI_Controller{
         'nis' => $nis,
         'nama_siswa' => $nama,
         'tempat_lahir_siswa' => $tempat_lahir,
-        'tanggal_lahir_siswa' => $tanggal_lahir,
+        'tanggal_lahir_siswa' => date('Y-m-d',$tanggal),
         'jenis_kelamin_siswa' => $jenis_kelamin,
         'alamat' => $alamat,
         'tahun_angkatan' => $tahun_angkatan,
@@ -120,7 +121,7 @@ class SiswaController extends CI_Controller{
         'foto' => $foto,
         'kelas_siswa' => $kelas_siswa
       ];
-
+      
       if($this->SiswaModel->find(['nis' => $nis])->num_rows()){
         $result['error'] = 'data sudah ada';
         array_push($fail,$result);
