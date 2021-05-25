@@ -89,7 +89,26 @@
   const myForm = document.querySelector('form');
   saveSiswa.addEventListener('click',(e) => {
     e.preventDefault();
-    
+    if(!nama_siswa.value) {
+      swal('Warning', 'Nama Tidak boleh kosong', { icon: 'warning'});
+      return;
+    } 
+    if(!nisn.value) {
+      swal('Warning', 'NISN Tidak boleh kosong', { icon: 'warning'});
+      return;
+    } 
+    if(!tempat_lahir.value) {
+      swal('Warning', 'Tempat Lahir Tidak boleh kosong', { icon: 'warning'});
+      return;
+    } 
+    if(!tanggal_lahir.value) {
+      swal('Warning', 'Tanggal Lahir Tidak boleh kosong', { icon: 'warning'});
+      return;
+    } 
+    if(!alamat.value) {
+      swal('Warning', 'Alamat Tidak boleh kosong', { icon: 'warning'});
+      return;
+    } 
     const formData = new FormData(myForm);
     const data = {
       method: 'post',

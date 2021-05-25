@@ -74,6 +74,14 @@
   const saveJadwal = document.querySelector('#saveJadwal');
   saveJadwal.addEventListener('click',(e)=>{
     e.preventDefault();
+    if (!jam_ke.value) {
+      swal('Warning', 'Jam Pelajaran Tidak boleh kosong', { icon: 'warning'});
+      return;
+    }
+    if (!waktu.value) {
+      swal('Warning', 'Waktu Pelajaran Tidak boleh kosong', { icon: 'warning'});
+      return;
+    }
     const data = {
       method: 'post',
       body: new URLSearchParams({

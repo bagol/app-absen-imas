@@ -68,6 +68,10 @@
   }
   save.addEventListener('click',(e) => {
     e.preventDefault();
+    if(!namaMapel.value){
+      swal('Warning','Nama Mapel Tidak boleh Kosong', { icon: 'warning'});
+      return;
+    }
     const data = {
       method: 'post',
       body: new URLSearchParams({ kode: kodeMapel. value,mapel: namaMapel.value }),

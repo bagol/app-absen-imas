@@ -9,15 +9,15 @@
             <form method="post" id="formKepsek" enctype="multipart/form-data">
               <div class="form-group">
                 <label>NIP/NUKS</label>
-                <input name="nip" type="text" class="form-control" placeholder="NIP/NUPTK" required>								
+                <input name="nip" id="nip" type="text" class="form-control" placeholder="NIP/NUPTK" required>								
               </div>
               <div class="form-group">
                 <label>Nama Kepala Sekolah</label>
-                <input name="nama" type="text" class="form-control" placeholder="Nama dan Gelar" required>
+                <input name="nama" id="nama" type="text" class="form-control" placeholder="Nama dan Gelar" required>
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <input name="email" type="email" class="form-control" placeholder="Email" required>
+                <input name="email" id="email" type="email" class="form-control" placeholder="Email" required>
               </div>
               <div class="form-group">
                 <label>Foto</label>
@@ -40,8 +40,15 @@
 <script>
   const form = document.querySelector('#formKepsek');
   const saveKepsek = document.querySelector('#saveKepsek');
+  const nip = document.querySelector('#nip');
+  const nama = document.querySelector('#nama');
+  const email = document.querySelector('#email');
   saveKepsek.addEventListener('click',(e) => {
     e.preventDefault();
+    if(!nip.value || !nama.value || !email.value){
+      swal('Warning', 'Tidak Boleh ada data yang kosong', { icon: 'warning'});
+      return;
+    }
     const option = {
       method: 'post',
       body: new FormData(form)

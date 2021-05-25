@@ -46,6 +46,10 @@
     const saveGuru = document.querySelector('#saveGuru');
     saveGuru.addEventListener('click', (e) => {
       e.preventDefault();
+      if(!nip.value || !nama.value || !email.value){
+        swal('Warning', 'Tidak boleh ada data yang kosong', { icon: 'warning'});
+        return;
+      }
       const formData = new FormData();
       formData.append('nip',nip.value);
       formData.append('nama',nama.value);

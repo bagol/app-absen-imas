@@ -104,7 +104,12 @@
   const tahunAjaran = document.querySelector('#tahunAjaran');
   const semester = document.querySelector('#semester');
   const save = document.querySelector('#save');
-  save.addEventListener('click',() => {
+  save.addEventListener('click',(e) => {
+    e.preventDefault();
+    if(!tahunAjaran.value){
+      swal('Warning','Tahun Ajaran tidak boleh kosong', { icon: 'warning' });
+      return;
+    }
     const data = {
       method: 'post',
       body: new URLSearchParams({
@@ -117,7 +122,10 @@
     const url = `<?=base_url("KelasSiswaController/store")?>`;
     fetchUrl(url,data)
       .then(data => {
-        console.log(data)
+        if(data.status === 'fail') {
+          swal(data.message,{ icon: data.icon })
+          return;
+        }
         swal(data.message,{ icon: data.icon })
           .then(ok => {
             if(ok){

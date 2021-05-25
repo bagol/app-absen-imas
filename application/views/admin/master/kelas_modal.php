@@ -70,6 +70,10 @@
   }
   save.addEventListener('click',(e) => {
     e.preventDefault();
+    if(!kode.value || !nama.value){
+      swal('Warning', 'Nama Kelas tidak boleh kosong', { icon: 'warning' });
+      return;
+    }
     const data  ={
       method: 'post',
       body: new URLSearchParams({ kode: kode.value, kelas: nama.value }),
