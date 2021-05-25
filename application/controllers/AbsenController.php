@@ -31,7 +31,10 @@ class AbsenController extends CI_Controller {
     $success = 0;
     $fail = 0;
     // priksa apakah tanggal yang diinput sudah diabsen jioka sudah kembalikan pesan error
-    if($this->AbsenModel->find(['tanggal' => $this->input->post('tanggal')])->num_rows()){
+    if($this->AbsenModel->find([
+        'tanggal' => $this->input->post('tanggal'),
+        'kode_jadwal' => $this->input->post('kode_jadwal')
+      ])->num_rows()){
       echo json_encode([
         'status' => 'fail',
         'message' => 'Tanggal ini sudah diabsen',
@@ -40,7 +43,10 @@ class AbsenController extends CI_Controller {
       return;
     }
     // priksa apakah pertemuan yang diinput sudah diabsen jika sudah kembalikan pesan error
-    if($this->AbsenModel->find(['pertemuan_ke' => $this->input->post('pertemuan')])->num_rows()){
+    if($this->AbsenModel->find([
+      'pertemuan_ke' => $this->input->post('pertemuan'),
+      'kode_jadwal' => $this->input->post('kode_jadwal')
+      ])->num_rows()){
       echo json_encode([
         'status' => 'fail',
         'message' => 'Pertemuan ini sudah diabsen',
