@@ -59,4 +59,16 @@
           $this->db->where($where);
           return $this->db->delete($this->table);
       }
+
+      function getJumlahHadirSiswa($kodeJadawl,$nis) {
+        $sql = "SELECT count(*) as jumlah_hadir FROM `absen` WHERE nis = '$nis' and kode_jadwal= '$kodeJadawl' and keterangan = 'H'";  
+        return $this->db->query($sql);
+      }
+
+      function getTotalPertemuan($kodeJadawl) {
+          $this->db->select('pertemuan_ke');
+          $this->db->order_by('pertemuan_ke', 'DESC');
+          $this->db->where(['kode_jadwal' => $kodeJadawl]);
+          return $this->db->get($this->table);
+      }
  }

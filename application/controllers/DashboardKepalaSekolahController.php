@@ -105,4 +105,19 @@ class DashboardKepalaSekolahController extends CI_Controller {
     $this->load->view('kepala_sekolah/siswa_kelas',$data);
     $this->load->view('layout/footer');
   }
+
+  function laporanPersentase($kodeKelas) {
+    $data['kode_kelas'] = $kodeKelas;
+    $kelas = $this->KelasSiswaModel->find(['kode_kelas_siswa' => $kodeKelas])->result_array();
+    $data['kelas'] = $kelas;
+    $title = [
+      'main' => 'Kelas',
+      'title' => 'Data Kelas',
+      'subTitle' => 'Laporan Absen'
+    ];
+    $data['mapel'] = $this->JadwalModel->find(['kode_kelas_siswa' => $kodeKelas])->result_array();
+    $this->load->view('layout/header',$title);
+    $this->load->view('kepala_sekolah/laporanPersentase',$data);
+    $this->load->view('layout/footer');
+  }
 }

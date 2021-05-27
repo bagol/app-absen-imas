@@ -28,7 +28,7 @@
                   <td><?=$k['semester']?></td>
                   <td><?=$k['siswa_per_kelas']?></td>
                   <td class="d-flex justify-content-around align-items-center">
-                    <a href="<?=base_url('DashboardKepalaSekolahController/jadwalKelas/')?><?=$k['kode_kelas_siswa']?>" class="btn btn-sm btn-success"><i class="fa fa-list"></i> Jadwal</a>
+                    <a href="<?=base_url('DashboardKepalaSekolahController/laporanPersentase/')?><?=$k['kode_kelas_siswa']?>" class="btn btn-sm btn-success"><i class="fa fa-list"></i> Jadwal</a>
                     <a href="<?=base_url('DashboardKepalaSekolahController/kelasSiswa/')?><?=$k['kode_kelas_siswa']?>" class="btn btn-sm btn-primary"><i class="fa fa-users"></i> siswa</a>
                   </td>
                 </tr>
