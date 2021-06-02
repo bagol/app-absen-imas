@@ -128,7 +128,7 @@
     <ul class="nav nav-collapse">
       <!-- -->
       <li>
-        <a href="?page=siswa">
+        <a href="<?=base_url('AdminController/rekapAbsen')?>">
           <span class="sub-item"> Absen Siswa </span>
         </a>
       </li>

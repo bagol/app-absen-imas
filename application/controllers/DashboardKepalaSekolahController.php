@@ -120,4 +120,10 @@ class DashboardKepalaSekolahController extends CI_Controller {
     $this->load->view('kepala_sekolah/laporanPersentase',$data);
     $this->load->view('layout/footer');
   }
+
+  function cetakLaporanPersentase($kodeKelas) {
+    $data['kode_kelas'] = $kodeKelas;
+
+    $this->load->view('cetak/cetakKepsek',$data);
+  }
 }

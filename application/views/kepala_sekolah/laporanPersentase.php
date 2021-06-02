@@ -20,8 +20,9 @@
             </tbody>
           </table>
         </div>
-        <div class="card-footer">
+        <div class="card-footer d-flex justify-content-between">
           <a href="javascript:history.back()" class="btn btn-sm btn-dark"><i class="fa fa-arrow-left"></i> kembali</a>
+          <a href="<?=base_url('DashboardKepalaSekolahController/cetakLaporanPersentase/')?><?=$kelas[0]['kode_kelas_siswa']?>" class="btn btn-primary btn-sm"><i class="fa fa-print"></i> cetak</a>
         </div>
       </div>
     </div>
